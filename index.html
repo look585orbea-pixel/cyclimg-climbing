@@ -384,21 +384,43 @@
       .modal-header { flex-direction: column; align-items: flex-start; gap: 6px; position: relative; }
       .btn-close-x { position: absolute; top: 8px; right: 8px; }
       
-      /* Mobile 2-column layout matching configuration screenshots */
+      /* Mobile layout: force single column and rearrange regions */
       .map-layout.mobile-mode {
         min-width: auto;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        display: flex;
+        flex-direction: column;
         gap: 8px;
       }
-      .map-layout.mobile-mode .region-card { width: 100%; padding: 8px; }
-      .map-layout.mobile-mode .pref-grid { grid-template-columns: 1fr; }
+      .map-layout.mobile-mode .map-row,
+      .map-layout.mobile-mode .region-col {
+        display: contents;
+      }
+      .map-layout.mobile-mode .region-card { 
+        width: 100%; 
+        padding: 8px; 
+        margin: 0 !important; 
+      }
+      
+      .map-layout.mobile-mode .region-hokkaido { order: 1; }
+      .map-layout.mobile-mode .region-tohoku { order: 2; }
+      .map-layout.mobile-mode .region-kanto { order: 3; }
+      .map-layout.mobile-mode .region-chubu { order: 4; }
+      .map-layout.mobile-mode .region-kinki { order: 5; }
+      .map-layout.mobile-mode .region-chugoku { order: 6; }
+      .map-layout.mobile-mode .region-shikoku { order: 7; }
+      .map-layout.mobile-mode .region-kyushu { order: 8; }
+
+      .map-layout.mobile-mode .pref-grid { 
+        display: grid;
+        grid-template-columns: 1fr; 
+        gap: 4px; 
+      }
       .map-layout.mobile-mode .pref-chip {
         width: 100%;
         max-width: none !important;
         grid-column: span 1 !important;
         justify-content: flex-start;
-        padding-left: 8px;
+        padding-left: 12px;
       }
     }
   </style>
